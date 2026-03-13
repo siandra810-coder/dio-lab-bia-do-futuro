@@ -1,6 +1,7 @@
 data,canal,tema,resumo,resolvido
-2025-09-15,chat,CDB,Cliente perguntou sobre rentabilidade e prazos,sim
-2025-09-22,telefone,Problema no app,Erro ao visualizar extrato foi corrigido,sim
-2025-10-01,chat,Tesouro Selic,Cliente pediu explicação sobre o funcionamento do Tesouro Direto,sim
-2025-10-12,chat,Metas financeiras,Cliente acompanhou o progresso da reserva de emergência,sim
-2025-10-25,email,Atualização cadastral,Cliente atualizou e-mail e telefone,sim
+2025-09-15,chat,Limite de gastos,Cliente perguntou como definir limite mensal de despesas,sim
+2025-09-22,telefone,Notificação de alerta,Erro ao receber alerta de gasto foi corrigido,sim
+2025-10-01,chat,Categoria de despesas,Cliente pediu explicação sobre classificação automática de gastos,sim
+2025-10-12,chat,Metas de economia,Cliente acompanhou o progresso da meta de reduzir gastos com lazer,sim
+2025-10-25,email,Atualização de preferências,Cliente atualizou e-mail para receber alertas de gastos,sim
+
