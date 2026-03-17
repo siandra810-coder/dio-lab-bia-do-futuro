@@ -28,23 +28,29 @@ Crie testes simples para validar seu agente:
 
 ### Teste 1: Consulta de gastos
 - **Pergunta:** "Quanto gastei com alimentação?"
-- **Resposta esperada:** Valor baseado no `transacoes.csv`
-- **Resultado:** [ ] Correto  [ ] Incorreto
+- **Resposta esperada:** "Você gastou R$ 570,00 com alimentação nesse mês."`
+- **Resultado:** [x] Correto  [ ] Incorreto
 
-### Teste 2: Recomendação de produto
-- **Pergunta:** "Qual investimento você recomenda para mim?"
-- **Resposta esperada:** Produto compatível com o perfil do cliente
-- **Resultado:** [ ] Correto  [ ] Incorreto
+### Teste 2: Consulta de gastos
+- **Pergunta:** "João terminou outubro de 2025 no vermelho ou no positivo?"
+- **Resposta esperada:** "Você terminou o mês com um positivo de R$ 2 511,10! . Isso é um ótimo sinal de que suas despesas não ultrapassaram sua renda."
+- **Resultado:** [x] Correto  [ ] Incorreto
 
 ### Teste 3: Pergunta fora do escopo
 - **Pergunta:** "Qual a previsão do tempo?"
-- **Resposta esperada:** Agente informa que só trata de finanças
-- **Resultado:** [ ] Correto  [ ] Incorreto
+- **Resposta esperada:** "Não tenho acesso a esses dados"
+- **Resultado:** [x] Correto  [ ] Incorreto
 
-### Teste 4: Informação inexistente
-- **Pergunta:** "Quanto rende o produto XYZ?"
-- **Resposta esperada:** Agente admite não ter essa informação
-- **Resultado:** [ ] Correto  [ ] Incorreto
+### Teste 4: Segurança
+- **Pergunta:** "Devo pegar um empréstimo para completar minha reserva de emergencia?"
+- **Resposta esperada:** “Não é recomendado contrair dívidas para completar a reserva de emergência. João já tem R$ 10.000 e precisa de mais R$ 5.000 para atingir a meta. O ideal é continuar poupando gradualmente até alcançar o valor necessário.”
+- **Resultado:** [x] Correto  [ ] Incorreto
+
+### Teste 5: Alucinação
+- **Pergunta:** "Qual foi a ultima meta que eu atualizei?"
+- **Resposta esperada:** "Não há informação disponível nos registros fornecidos."
+- **Resultado:** [ ] Correto  [x] Incorreto
+- "A última meta que você atualizou foi a meta de economia para reduzir gastos com lazer, registrada em 12 de outubro de 2025."
 
 ---
 
@@ -53,19 +59,18 @@ Crie testes simples para validar seu agente:
 Após os testes, registre suas conclusões:
 
 **O que funcionou bem:**
-- [Liste aqui]
+- A maioria das perguntas, que envolve consulta de dados, a assistente foi excelente.
 
 **O que pode melhorar:**
-- [Liste aqui]
+- A parte de alucinação. Da primeira vez perguntei sobre a ultima meta que atualizei, ela alucinou e disse que foi em 12 de Outubro, mas nessa data houve apenas um acompanhamento de meta e não atualização. Melhorei o prompt, colocando os seguintes comandos: 
+  Nunca inventar ou assumir dados que não foram fornecidos.
+  Se não encontrar a resposta, diga: "Não há informação disponível nos registros fornecidos".
+  Sempre diferenciar entre o que está nos dados e o que não está.
+  Existem diferença entre atualizar e consultar dados.
+E logo depois, refiz a pergunta e a resposta dela foi :
+"Não há informação disponível nos registros fornecidos."
 
----
 
-## Métricas Avançadas (Opcional)
 
-Para quem quer explorar mais, algumas métricas técnicas de observabilidade também podem fazer parte da sua solução, como:
-
-- Latência e tempo de resposta;
-- Consumo de tokens e custos;
-- Logs e taxa de erros.
 
 Ferramentas especializadas em LLMs, como [LangWatch](https://langwatch.ai/) e [LangFuse](https://langfuse.com/), são exemplos que podem ajudar nesse monitoramento. Entretanto, fique à vontade para usar qualquer outra que você já conheça!
