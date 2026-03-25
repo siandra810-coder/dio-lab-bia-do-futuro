@@ -30,4 +30,50 @@ A Elena Control foi projetada em uma arquitetura modular e simples:
    - Processa o prompt, envia para o modelo e retorna a resposta.  
    - Inclui regras para evitar alucinações e garantir segurança nas respostas.  
 
-3. **Camada
+3. **Camada de Dados**  
+   - **Transações financeiras**: CSV com entradas e saídas mensais.  
+   - **Histórico de atendimento**: CSV com registros de interações anteriores.  
+   - **Perfil do investidor**: JSON com informações pessoais, renda e metas.  
+   - Esses dados são usados para contextualizar as respostas da assistente.  
+
+4. **Modelo de IA**  
+   - Conectado via API (Ollama ou outro modelo configurado).  
+   - Recebe prompts estruturados com contexto do cliente e regras de segurança.  
+   - Gera respostas adaptadas ao perfil e situação financeira.
+## 📊 Diagrama de Arquitetura
+
+```mermaid
+flowchart TD
+    U[Usuario] --> F[Frontend Streamlit]
+    F --> B[Backend Perguntar]
+    B --> D[Camada Dados]
+    D --> T[Transacoes CSV]
+    D --> H[Historico Atendimento CSV]
+    D --> P[Perfil Investidor JSON]
+    B --> M[Modelo IA API Ollama]
+    M --> F
+```
+
+
+
+
+
+---
+
+## 🔑 Diferenciais da Solução
+- **Coerência**: trabalha apenas com os dados fornecidos pelo cliente.  
+- **Segurança**: nunca sugere práticas arriscadas ou ilegais.  
+- **Assertividade**: respostas claras e educativas, sem jargões técnicos.  
+- **Inovação**: transforma relatórios financeiros em diálogo interativo, aproximando inteligência artificial da vida financeira real.  
+
+## ▶️ Como executar
+1. Instale as dependências:
+   ```bash
+   pip install -r requirements.txt
+2. Rode a Aplicação
+   ``` streamlit run src/app.py```
+3. Acesse no navegador:
+   ```http://localhost:8501```
+
+## ▶️ Pitch 
+     https://www.loom.com/share/0da8f052f0614c92a4151dce81726a90
