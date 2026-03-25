@@ -1,149 +1,80 @@
-# 🤖 Agente Financeiro Inteligente com IA Generativa
+Elena Control 💡
+Elena Control é uma assistente financeira inteligente e didática, desenvolvida para ajudar usuários a entender melhor suas finanças pessoais, controlar gastos e alcançar objetivos de forma prática e motivadora.
 
-## Contexto
+🚀 Objetivo
+Transformar dados financeiros em orientação clara e acessível, oferecendo alertas sobre gastos, acompanhamento de metas e educação financeira sem jargões técnicos.
 
-Os assistentes virtuais no setor financeiro estão evoluindo de simples chatbots reativos para **agentes inteligentes e proativos**. Neste desafio, você vai idealizar e prototipar um agente financeiro que utiliza IA Generativa para:
+📂 Estrutura do Projeto
+src/app.py → Aplicação principal em Streamlit, responsável pela interface de chat com o usuário.
 
-- **Antecipar necessidades** ao invés de apenas responder perguntas
-- **Personalizar** sugestões com base no contexto de cada cliente
-- **Cocriar soluções** financeiras de forma consultiva
-- **Garantir segurança** e confiabilidade nas respostas (anti-alucinação)
+data/transacoes.csv → Registro das transações financeiras recentes.
 
-> [!TIP]
-> Na pasta [`examples/`](./examples/) você encontra referências de implementação para cada etapa deste desafio.
+data/historico_atendimento.csv → Histórico de interações e atendimentos anteriores.
 
----
+data/perfil_investidor.json → Perfil do cliente, incluindo renda, patrimônio e metas financeiras.
 
-## O Que Você Deve Entregar
+🧠 Funcionalidades
+Análise automática de receitas e despesas.
 
-### 1. Documentação do Agente
+Alertas quando os gastos ultrapassam a renda mensal.
 
-Defina **o que** seu agente faz e **como** ele funciona:
+Reforço das metas financeiras do cliente (ex.: reserva de emergência, entrada de imóvel).
 
-- **Caso de Uso:** Qual problema financeiro ele resolve? (ex: consultoria de investimentos, planejamento de metas, alertas de gastos)
-- **Persona e Tom de Voz:** Como o agente se comporta e se comunica?
-- **Arquitetura:** Fluxo de dados e integração com a base de conhecimento
-- **Segurança:** Como evitar alucinações e garantir respostas confiáveis?
+Respostas sempre coerentes, seguras e assertivas, sem alucinações ou recomendações arriscadas.
 
-📄 **Template:** [`docs/01-documentacao-agente.md`](./docs/01-documentacao-agente.md)
+Linguagem amigável e motivadora, adaptada ao perfil do usuário.
 
----
+🏗️ Arquitetura da Solução
+A Elena Control foi projetada em uma arquitetura simples, mas modular:
 
-### 2. Base de Conhecimento
+Interface (Frontend)
 
-Utilize os **dados mockados** disponíveis na pasta [`data/`](./data/) para alimentar seu agente:
+Desenvolvida em Streamlit, fornece uma experiência de chat interativo.
 
-| Arquivo | Formato | Descrição |
-|---------|---------|-----------|
-| `transacoes.csv` | CSV | Histórico de transações do cliente |
-| `historico_atendimento.csv` | CSV | Histórico de atendimentos anteriores |
-| `perfil_investidor.json` | JSON | Perfil e preferências do cliente |
-| `produtos_financeiros.json` | JSON | Produtos e serviços disponíveis |
+Exibe mensagens do usuário e respostas da assistente em formato de diálogo.
 
-Você pode adaptar ou expandir esses dados conforme seu caso de uso.
+Camada de Lógica (Backend)
 
-📄 **Template:** [`docs/02-base-conhecimento.md`](./docs/02-base-conhecimento.md)
+Função perguntar() centraliza a comunicação com o modelo de IA.
 
----
+Processa o prompt, envia para o modelo e retorna a resposta.
 
-### 3. Prompts do Agente
+Inclui regras para evitar alucinações e garantir segurança nas respostas.
 
-Documente os prompts que definem o comportamento do seu agente:
+Camada de Dados
 
-- **System Prompt:** Instruções gerais de comportamento e restrições
-- **Exemplos de Interação:** Cenários de uso com entrada e saída esperada
-- **Tratamento de Edge Cases:** Como o agente lida com situações limite
+Transações financeiras: CSV com entradas e saídas mensais.
 
-📄 **Template:** [`docs/03-prompts.md`](./docs/03-prompts.md)
+Histórico de atendimento: CSV com registros de interações anteriores.
 
----
+Perfil do investidor: JSON com informações pessoais, renda e metas.
 
-### 4. Aplicação Funcional
+Esses dados são usados para contextualizar as respostas da assistente.
 
-Desenvolva um **protótipo funcional** do seu agente:
+Modelo de IA
 
-- Chatbot interativo (sugestão: Streamlit, Gradio ou similar)
-- Integração com LLM (via API ou modelo local)
-- Conexão com a base de conhecimento
+Conectado via API (Ollama ou outro modelo configurado).
 
-📁 **Pasta:** [`src/`](./src/)
+Recebe prompts estruturados com contexto do cliente e regras de segurança.
 
----
+Gera respostas adaptadas ao perfil e situação financeira.
 
-### 5. Avaliação e Métricas
+🔑 Diferenciais da Solução
+Coerência: trabalha apenas com os dados fornecidos pelo cliente.
 
-Descreva como você avalia a qualidade do seu agente:
+Segurança: nunca sugere práticas arriscadas ou ilegais.
 
-**Métricas Sugeridas:**
-- Precisão/assertividade das respostas
-- Taxa de respostas seguras (sem alucinações)
-- Coerência com o perfil do cliente
+Assertividade: respostas claras e educativas, sem jargões técnicos.
 
-📄 **Template:** [`docs/04-metricas.md`](./docs/04-metricas.md)
+Inovação: transforma relatórios financeiros em diálogo interativo, aproximando inteligência artificial da vida financeira real.
 
----
+▶️ Como executar
+Instale as dependências:
 
-### 6. Pitch
+bash
+pip install -r requirements.txt
+Rode a aplicação:
 
-Grave um **pitch de 3 minutos** (estilo elevador) apresentando:
-
-- Qual problema seu agente resolve?
-- Como ele funciona na prática?
-- Por que essa solução é inovadora?
-
-📄 **Template:** [`docs/05-pitch.md`](./docs/05-pitch.md)
-
----
-
-## Ferramentas Sugeridas
-
-Todas as ferramentas abaixo possuem versões gratuitas:
-
-| Categoria | Ferramentas |
-|-----------|-------------|
-| **LLMs** | [ChatGPT](https://chat.openai.com/), [Copilot](https://copilot.microsoft.com/), [Gemini](https://gemini.google.com/), [Claude](https://claude.ai/), [Ollama](https://ollama.ai/) |
-| **Desenvolvimento** | [Streamlit](https://streamlit.io/), [Gradio](https://www.gradio.app/), [Google Colab](https://colab.research.google.com/) |
-| **Orquestração** | [LangChain](https://www.langchain.com/), [LangFlow](https://www.langflow.org/), [CrewAI](https://www.crewai.com/) |
-| **Diagramas** | [Mermaid](https://mermaid.js.org/), [Draw.io](https://app.diagrams.net/), [Excalidraw](https://excalidraw.com/) |
-
----
-
-## Estrutura do Repositório
-
-```
-📁 lab-agente-financeiro/
-│
-├── 📄 README.md
-│
-├── 📁 data/                          # Dados mockados para o agente
-│   ├── historico_atendimento.csv     # Histórico de atendimentos (CSV)
-│   ├── perfil_investidor.json        # Perfil do cliente (JSON)
-│   ├── produtos_financeiros.json     # Produtos disponíveis (JSON)
-│   └── transacoes.csv                # Histórico de transações (CSV)
-│
-├── 📁 docs/                          # Documentação do projeto
-│   ├── 01-documentacao-agente.md     # Caso de uso e arquitetura
-│   ├── 02-base-conhecimento.md       # Estratégia de dados
-│   ├── 03-prompts.md                 # Engenharia de prompts
-│   ├── 04-metricas.md                # Avaliação e métricas
-│   └── 05-pitch.md                   # Roteiro do pitch
-│
-├── 📁 src/                           # Código da aplicação
-│   └── app.py                        # (exemplo de estrutura)
-│
-├── 📁 assets/                        # Imagens e diagramas
-│   └── ...
-│
-└── 📁 examples/                      # Referências e exemplos
-    └── README.md
-```
-
----
-
-## Dicas Finais
-
-1. **Comece pelo prompt:** Um bom system prompt é a base de um agente eficaz
-2. **Use os dados mockados:** Eles garantem consistência e evitam problemas com dados sensíveis
-3. **Foque na segurança:** No setor financeiro, evitar alucinações é crítico
-4. **Teste cenários reais:** Simule perguntas que um cliente faria de verdade
-5. **Seja direto no pitch:** 3 minutos passam rápido, vá ao ponto
+bash
+streamlit run src/app.py
+Acesse no navegador: http://localhost:8501
